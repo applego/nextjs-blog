@@ -1,19 +1,10 @@
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout'
 import Date from '../components/date'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
-
-// 関数を呼び出した結果は props キーの内部で返す必要があります。
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
 
 export default function Home({ allPostsData }) {
   return (
@@ -40,7 +31,7 @@ export default function Home({ allPostsData }) {
                 <a>{title}</a>
               </Link>
               <br />
-              <small classname={utilStyles.lightText}>
+              <small className={utilStyles.lightText}>
                 <Date dateString={date} />
               </small>
             </li>
@@ -49,4 +40,14 @@ export default function Home({ allPostsData }) {
       </section>
     </Layout>
   )
+}
+
+// 関数を呼び出した結果は props キーの内部で返す必要があります。
+export const getStaticProps: GetStaticProps = async () => {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
 }
