@@ -28,7 +28,7 @@ export default function Layout({ children, home }) {
         {home ? (
           <>
             <img
-              src="/images/pfofile.jpg"
+              src="/images/profile.jpg"
               className={`${styles.headerHome} ${utilStyles.borderCircle}`}
               alt={name}
             />
@@ -56,7 +56,7 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link hhref="/">
+          <Link href="/">
             <a>← Back to home</a>
           </Link>
         </div>
